@@ -1,0 +1,22 @@
+= Detroit RDoc Tool
+
+
+== DESCRIPTION
+
+RDoc and RI documentation tools are used to generate RDoc and RI
+documentation files for a Ruby project.
+
+
+== INSTALL
+
+  $ gem install detroit-rdoc
+
+
+== COPYRIGHT
+
+Copyright (c) 2011 Thomas Sawyer
+
+GPL v.3 license
+
+See COPYING.rdoc and GPL3.txt file for details.
+
