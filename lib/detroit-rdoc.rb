@@ -29,6 +29,9 @@ module Detroit
     # Deafult extra options to add to rdoc call.
     DEFAULT_EXTRA        = ''
 
+
+    #  A T T R I B U T E S
+
     # Title of documents. Defaults to general metadata title field.
     attr_accessor :title
 
@@ -67,6 +70,27 @@ module Detroit
 
     # Additional options passed to the rdoc command.
     attr_accessor :extra
+
+
+    #  A S S E M B L Y  S T A T I O N S
+
+    # Attach document method to document assembly station.
+    def station_document
+      document
+    end
+
+    # Attach reset method to reset assembly station.
+    def station_reset
+      rest
+    end
+
+    # Attach purge method to purge assembly station.
+    def station_purge
+      purge
+    end
+
+
+    #  S E R V I C E  M E T H O D S
 
     # Generate Rdoc documentation. Settings are the
     # same as the rdoc command's option, with two
