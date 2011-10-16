@@ -1,3 +1,5 @@
+require 'detroit/tool'
+
 module Detroit
 
   # Create new RI tool with specified +options+.

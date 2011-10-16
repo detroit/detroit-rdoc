@@ -1,3 +1,5 @@
+require 'detroit/tool'
+
 module Detroit
 
   # Create a new RDoc tool with the specified +options+.
