@@ -1,0 +1,7 @@
+#!mast .ruby bin lib man qed test [A-Z]*.*
+.ruby
+lib/detroit-rdoc.rb
+lib/detroit-ri.rb
+README.rdoc
+GPL3.txt
+COPYING.rdoc

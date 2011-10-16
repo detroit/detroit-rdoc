@@ -1,8 +1,8 @@
 ---
-name : detroit-rdoc
-title: Detroit RDoc
-
-contact: trans <transfire@gmail.com>
+name    : detroit-rdoc
+version : 0.1.0
+title   : Detroit RDoc
+summary : RDoc and RI plugins for Detroit
 
 description:
   RDoc and RI plugins for Detroit build system.
@@ -10,7 +10,11 @@ description:
 resources:
   home: http://detroit.github.com/
   code: http://github.com/detroit/detroit-rdoc
+  mail: http://google.groups.com/group/rubyworks-mailinglist
 
-copyright:
-  (c) 2011 Thomas Sawyer
+authors:
+  - T. Sawyer <transfire@gmail.com>
+
+copyrights:
+  - (c) 2011 Thomas Sawyer (GPL-3)
 

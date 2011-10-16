@@ -1,30 +1,29 @@
---- 
-spec_version: 1.0.0
-replaces: []
-
-loadpath: 
-- lib
-name: detroit-rdoc
-repositories: {}
-
+---
+authors:
+- name: T. Sawyer
+  email: transfire@gmail.com
+copyrights:
+- holder: Thomas Sawyer
+  year: '2011'
+  license: GPL-3
+replacements: []
 conflicts: []
-
-engine_check: []
-
-title: Detroit RDoc
-contact: trans <transfire@gmail.com>
-resources: 
-  code: http://github.com/detroit/detroit-rdoc
+requirements: []
+dependencies: []
+repositories: []
+resources:
   home: http://detroit.github.com/
-maintainers: []
-
-requires: []
-
-version: 0.0.1
-licenses: []
-
-copyright: (c) 2011 Thomas Sawyer
-authors: 
-- Thomas Sawyer
+  code: http://github.com/detroit/detroit-rdoc
+  mail: http://google.groups.com/group/rubyworks-mailinglist
+load_path:
+- lib
+extra: {}
+revision: 0
+name: detroit-rdoc
+source: []
+alternatives: []
+title: Detroit RDoc
+version: 0.1.0
+summary: RDoc and RI plugins for Detroit
 description: RDoc and RI plugins for Detroit build system.
-summary: RDoc and RI plugins for Detroit build system.
+date: '2011-10-16'
