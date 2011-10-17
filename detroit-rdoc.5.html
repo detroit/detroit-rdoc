@@ -88,8 +88,7 @@ to define an RDoc service.</p>
 
 <ul>
 <li><p><code>title</code> - Title of documents. Defaults to general metadata title field.</p></li>
-<li><p><code>output</code> - Where to save rdoc files. The default is <code>doc/</code> or <code>.rdoc</code>
- if the ri format is beng used.</p></li>
+<li><p><code>output</code> - Where to save rdoc files. The default is <code>doc/</code>.</p></li>
 <li><p><code>format</code> - Documentation format. This defaults to <code>ENV['RDOC_FORMAT']</code>
  or 'darkfish'.</p></li>
 <li><p><code>template</code> - Template to use. Some formats support multiple templates.
@@ -126,24 +125,13 @@ to define an RDoc service.</p>
   format: hanna
 </code></pre>
 
-<p>To generate documentation files for <code>ri</code> command line tool set the
-format to to <code>'ri'</code>.</p>
-
-<pre><code>rdoc:
-  title: MyApp API
-  include: [lib]
-  ignore: ['*.yml']
-  output: .rdoc
-  format: ri
-</code></pre>
-
-<p>The default output location when using the ri format is <code>.rdoc</code>.</p>
-
 <p>The above examples use the YAML-base assembly format. Assembly
 files can also be Ruby-based. See Detroit documentation for more
 details.</p>
 
 <h2 id="RESOURCES">RESOURCES</h2>
+
+<p>For more information:</p>
 
 <ul>
 <li><p><a href="http://rubydoc.info/gems/detroit-rdoc">API Documentation</a></p></li>
