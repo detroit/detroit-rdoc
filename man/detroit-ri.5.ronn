@@ -1,0 +1,67 @@
+detroit-ri(5) - generate ri documentation files via detroit
+===========================================================
+
+## DESCRIPTION
+
+The RI plug-in for Detroit utilizes the rdoc documentation
+tool to generate ri reference documentation for a project.
+
+This plug-in is included with the `detroit-rdoc` package,
+which also includes the detroit-rdoc(5) plug-in.
+
+
+## OPTIONS
+
+The following options can be used in the Detroit assembly file
+to define an RDoc service.
+
+  * `output` - Where to save rdoc files. The default is `.rdoc/`.
+
+  * `files`/`include` - Which files to document. Defaults to `lib/`.
+
+  * `exclude` - Paths to specifically exclude.
+
+  * `ignore` - File patterns to ignore.
+
+  * `extra` - Additional options passed to the `rdoc` command.
+
+
+## EXAMPLES
+
+Option defaults are very typical. So the simplest entry is simply:
+
+    ri:
+      active: true
+
+A more complex example might look like:
+
+    rdoc:
+      title: MyApp API
+      include: [lib, bin]
+      ignore: ['*.yml']
+      output: site/api
+      main: INTRO.rdoc
+      format: hanna
+
+The above examples use the YAML-base assembly format. Assembly
+files can also be Ruby-based. See Detroit documentation for more
+details.
+
+
+## RESOURCES
+
+  * [API Documentation](http://rubydoc.info/gems/detroit-rdoc)
+
+  * [Development Site](http://github.com/detroit/detroit-rdoc)
+
+
+## COPYRIGHT
+
+Copyright (c) 2010 Thomas Sawyer, Rubyworks
+
+Detroit RDoc is distributable in accordance with the GPLv3 license.
+
+
+## SEE ALSO
+
+detroit(1), rdoc(1), detroit-rdoc(5)

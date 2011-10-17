@@ -1,0 +1,96 @@
+detroit-rdoc(5) - generate rdoc api documentation via detroit
+=============================================================
+
+## DESCRIPTION
+
+The RDoc plug-in for Detroit utilizes the rdoc documentation
+tool to generate API documentation for a project. It can also
+be used to generate ri documentation file.
+
+This plug-in package also includes detroit-ri(5).
+
+
+## OPTIONS
+
+The following options can be used in the Detroit assembly file
+to define an RDoc service.
+
+  * `title` - Title of documents. Defaults to general metadata title field.
+
+  * `output` - Where to save rdoc files. The default is `doc/` or `.rdoc`
+     if the ri format is beng used.
+
+  * `format` - Documentation format. This defaults to `ENV['RDOC_FORMAT']`
+     or 'darkfish'.
+
+  * `template` - Template to use. Some formats support multiple templates.
+     This defaults to `ENV['RDOC_TEMPLATE']`.
+
+  * `main` - Main file.  This can be a file pattern. This default is matched
+     to `README{,.*}`.
+
+  * `files`/`include` - Which files to document. The default is `lib/`.
+
+  * `exclude` - Paths to specifically exclude.
+
+  * `ignore` - File patterns to ignore.
+
+  * `adfile` - Ad file html snippet to add to html rdocs.
+
+  * `extra` - Additional options passed to the `rdoc` command.
+
+
+## EXAMPLES
+
+Option defaults are fairly typical. So the simplest entry is something like:
+
+    rdoc:
+      output: doc/
+
+A more complex example might look like:
+
+    rdoc:
+      title: MyApp API
+      include:
+         - lib
+         - [A-Z]*.*
+      ignore: 
+        - '*.yml'
+      output: site/api
+      main: INTRO.rdoc
+      format: hanna
+
+To generate documentation files for `ri` command line tool set the
+format to to `'ri'`.
+
+    rdoc:
+      title: MyApp API
+      include: [lib]
+      ignore: ['*.yml']
+      output: .rdoc
+      format: ri
+
+The default output location when using the ri format is `.rdoc`.
+
+The above examples use the YAML-base assembly format. Assembly
+files can also be Ruby-based. See Detroit documentation for more
+details.
+
+
+## RESOURCES
+
+  * [API Documentation](http://rubydoc.info/gems/detroit-rdoc)
+
+  * [Development Site](http://github.com/detroit/detroit-rdoc)
+
+
+## COPYRIGHT
+
+Copyright (c) 2010 Thomas Sawyer, Rubyworks
+
+Detroit RDoc is distributable in accordance with the GPLv3 license.
+
+
+## SEE ALSO
+
+detroit(1), rdoc(1), detroit-ri(5)

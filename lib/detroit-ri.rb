@@ -10,7 +10,7 @@ module Detroit
   # The ri documentation tool provides services for
   # generating ri documentation.
   #
-  # By default it generates the ri documentaiton at doc/ri,
+  # By default it generates the ri documentaiton at `.rdoc`,
   # unless an 'ri' directory exists in the project's root
   # directory, in which case the ri documentation will be
   # stored there.
@@ -139,6 +139,12 @@ module Detroit
     #
     def initialize_requires
       require_rdoc
+    end
+
+  public
+
+    def self.man_page
+      File.dirname(__FILE__)+'/../man/detroit-minitest.5'      
     end
 
   end

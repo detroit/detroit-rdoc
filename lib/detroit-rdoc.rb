@@ -17,7 +17,7 @@ module Detroit
   class RDoc < Tool
 
     # Default location to store rdoc documentation files.
-    DEFAULT_OUTPUT       = "doc/rdoc"
+    DEFAULT_OUTPUT       = "doc"
 
     # Locations to check for existance in deciding where to store rdoc documentation.
     DEFAULT_OUTPUT_MATCH = "{site/rdoc,doc/rdoc,rdoc}"
@@ -302,6 +302,12 @@ module Detroit
     #
     def initialize_requires
       require_rdoc
+    end
+
+  public
+
+    def self.man_page
+      File.dirname(__FILE__)+'/../man/detroit-minitest.5'      
     end
 
   end
