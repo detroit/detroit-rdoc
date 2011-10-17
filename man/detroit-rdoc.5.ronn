@@ -66,6 +66,8 @@ details.
 
 ## RESOURCES
 
+For more information:
+
   * [API Documentation](http://rubydoc.info/gems/detroit-rdoc)
 
   * [Development Site](http://github.com/detroit/detroit-rdoc)

@@ -19,7 +19,7 @@ The following options can be used in the Detroit assembly file to define an RDoc
 \fBtitle\fR \- Title of documents\. Defaults to general metadata title field\.
 .
 .IP "\(bu" 4
-\fBoutput\fR \- Where to save rdoc files\. The default is \fBdoc/\fR or \fB\.rdoc\fR if the ri format is beng used\.
+\fBoutput\fR \- Where to save rdoc files\. The default is \fBdoc/\fR\.
 .
 .IP "\(bu" 4
 \fBformat\fR \- Documentation format\. This defaults to \fBENV[\'RDOC_FORMAT\']\fR or \'darkfish\'\.
@@ -84,30 +84,10 @@ rdoc:
 .IP "" 0
 .
 .P
-To generate documentation files for \fBri\fR command line tool set the format to to \fB\'ri\'\fR\.
-.
-.IP "" 4
-.
-.nf
-
-rdoc:
-  title: MyApp API
-  include: [lib]
-  ignore: [\'*\.yml\']
-  output: \.rdoc
-  format: ri
-.
-.fi
-.
-.IP "" 0
-.
-.P
-The default output location when using the ri format is \fB\.rdoc\fR\.
-.
-.P
 The above examples use the YAML\-base assembly format\. Assembly files can also be Ruby\-based\. See Detroit documentation for more details\.
 .
 .SH "RESOURCES"
+For more information:
 .
 .IP "\(bu" 4
 API Documentation \fIhttp://rubydoc\.info/gems/detroit\-rdoc\fR
