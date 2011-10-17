@@ -17,8 +17,7 @@ to define an RDoc service.
 
   * `title` - Title of documents. Defaults to general metadata title field.
 
-  * `output` - Where to save rdoc files. The default is `doc/` or `.rdoc`
-     if the ri format is beng used.
+  * `output` - Where to save rdoc files. The default is `doc/`.
 
   * `format` - Documentation format. This defaults to `ENV['RDOC_FORMAT']`
      or 'darkfish'.
@@ -59,18 +58,6 @@ A more complex example might look like:
       output: site/api
       main: INTRO.rdoc
       format: hanna
-
-To generate documentation files for `ri` command line tool set the
-format to to `'ri'`.
-
-    rdoc:
-      title: MyApp API
-      include: [lib]
-      ignore: ['*.yml']
-      output: .rdoc
-      format: ri
-
-The default output location when using the ri format is `.rdoc`.
 
 The above examples use the YAML-base assembly format. Assembly
 files can also be Ruby-based. See Detroit documentation for more
