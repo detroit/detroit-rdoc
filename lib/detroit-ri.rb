@@ -48,6 +48,29 @@ module Detroit
     # Additional options passed to the rdoc command.
     attr_accessor :extra
 
+
+    #  A S S E M B L Y  M E T H O D S
+
+    #
+    def assemble?(station, options={})
+      when station
+      case :document then true
+      case :reset    then true
+      case :clean    then true
+      case :purge    then true
+      end
+    end
+
+    # Attach to document, reset and purge assembly stations.
+    def assemble(station, options={})
+      when station
+      case :document then document
+      case :reset    then reset
+      case :clean    then clean
+      case :purge    then purge
+      end
+    end
+
     # Generate ri documentation. This utilizes
     # rdoc to produce the appropriate files.
     #
@@ -102,7 +125,7 @@ module Detroit
       end
     end
 
-    private
+  private
 
     # Generate ri docs for input targets.
     #
