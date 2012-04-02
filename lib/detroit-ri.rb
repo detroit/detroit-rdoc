@@ -53,21 +53,21 @@ module Detroit
 
     #
     def assemble?(station, options={})
-      when station
-      case :document then true
-      case :reset    then true
-      case :clean    then true
-      case :purge    then true
+      case station
+      when :document then true
+      when :reset    then true
+      when :clean    then true
+      when :purge    then true
       end
     end
 
     # Attach to document, reset and purge assembly stations.
     def assemble(station, options={})
-      when station
-      case :document then document
-      case :reset    then reset
-      case :clean    then clean
-      case :purge    then purge
+      case station
+      when :document then document
+      when :reset    then reset
+      when :clean    then clean
+      when :purge    then purge
       end
     end
 
