@@ -26,7 +26,7 @@ revision: 0
 created: '2011-10-16'
 summary: RDoc and RI plugins for Detroit
 title: Detroit RDoc
-version: 0.1.0
+version: 0.2.0
 name: detroit-rdoc
 suite: detroit
 description: RDoc and RI plugins for Detroit build system.
