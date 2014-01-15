@@ -12,8 +12,8 @@ which also includes the detroit-rdoc(5) plug-in.
 
 ## OPTIONS
 
-The following options can be used in the Detroit assembly file
-to define an RDoc service.
+The following options can be used in the Detroit toolchain file
+to define an RDoc tool instance.
 
   * `output` - Where to save rdoc files. The default is `.rdoc/`.
 
@@ -57,9 +57,9 @@ details.
 
 ## COPYRIGHT
 
-Copyright (c) 2010 Thomas Sawyer, Rubyworks
+Copyright (c) 2010 Rubyworks
 
-Detroit RDoc is distributable in accordance with the GPLv3 license.
+Detroit RDoc is distributable in accordance with the GPL v3 license.
 
 
 ## SEE ALSO

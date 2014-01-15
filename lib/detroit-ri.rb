@@ -1,8 +1,8 @@
-require 'detroit/tool'
+require 'detroit-standard'
 
 module Detroit
 
-  # Create new RI tool with specified +options+.
+  # Create new RI tool with specified `options`.
   def RI(options={})
     RI.new(options)
   end
@@ -15,22 +15,35 @@ module Detroit
   # directory, in which case the ri documentation will be
   # stored there.
   #
+  # * document
+  # * reset
+  # * clean
+  # * purge
+  #
   class RI < Tool
 
-    # Default location to store ri documentation files.
-    DEFAULT_OUTPUT       = ".rdoc"
+    # Works with the Standard assembly.
+    #
+    # @!parse
+    #   include Standard
+    #
+    assembly Standard
 
-    # Locations to check for existence in deciding where to store ri documentation.
-    DEFAULT_OUTPUT_MATCH = "{.rdoc,.ri,ri,doc/ri}"
-
-    # Default extra options to add to rdoc call.
-    DEFAULT_EXTRA        = ''
+    # Location of manpage for tool.
+    MANPAGE = File.dirname(__FILE__) + '/../man/detroit-ri.5'
 
     #
-    def initialize_defaults
-      @files  = metadata.loadpath
-      @output = Dir[DEFAULT_OUTPUT_MATCH].first || DEFAULT_OUTPUT
-      @extra  = DEFAULT_EXTRA
+    def prerequisite
+      # NOTE: Due to a bug in RDoc this needs to be done for now
+      # so that alternate templates can be used.
+      begin
+        require 'rubygems'
+        gem('rdoc')
+      rescue LoadError
+        $stderr.puts "Oh no! No modern rdoc!"
+      end
+      #require 'rdoc'
+      require 'rdoc/rdoc'
     end
 
     # Where to save rdoc files (doc/rdoc).
@@ -47,29 +60,6 @@ module Detroit
 
     # Additional options passed to the rdoc command.
     attr_accessor :extra
-
-
-    #  A S S E M B L Y  M E T H O D S
-
-    #
-    def assemble?(station, options={})
-      case station
-      when :document then true
-      when :reset    then true
-      when :clean    then true
-      when :purge    then true
-      end
-    end
-
-    # Attach to document, reset and purge assembly stations.
-    def assemble(station, options={})
-      case station
-      when :document then document
-      when :reset    then reset
-      when :clean    then clean
-      when :purge    then purge
-      end
-    end
 
     # Generate ri documentation. This utilizes
     # rdoc to produce the appropriate files.
@@ -125,7 +115,37 @@ module Detroit
       end
     end
 
+    # This tool ties into the `document`, `reset`, `clean` and `purge` stations
+    # of the standard assembly.
+    #
+    # @return [Boolean,Symbol]
+    def assemble?(station, options={})
+      return true if station == :document
+      return true if station == :reset
+      return true if station == :clean
+      return true if station == :purge
+      return false
+    end
+
   private
+
+    # Default location to store ri documentation files.
+    DEFAULT_OUTPUT = ".rdoc"
+
+    # Locations to check for existence in deciding where to store ri documentation.
+    DEFAULT_OUTPUT_MATCH = "{.rdoc,.ri,ri,doc/ri}"
+
+    # Default extra options to add to rdoc call.
+    DEFAULT_EXTRA = ''
+
+    #
+    def initialize_defaults
+      super
+
+      @files  = metadata.loadpath
+      @output = Dir[DEFAULT_OUTPUT_MATCH].first || DEFAULT_OUTPUT
+      @extra  = DEFAULT_EXTRA
+    end
 
     # Generate ri docs for input targets.
     #
@@ -143,31 +163,6 @@ module Detroit
         rdoc.document(argv)
         #end
       end
-    end
-
-    #
-    def require_rdoc
-      # NOTE: Due to a bug in RDoc this needs to be done for now
-      # so that alternate templates can be used.
-      begin
-        require 'rubygems'
-        gem('rdoc')
-      rescue LoadError
-        $stderr.puts "Oh no! No modern rdoc!"
-      end
-      #require 'rdoc'
-      require 'rdoc/rdoc'
-    end
-
-    #
-    def initialize_requires
-      require_rdoc
-    end
-
-  public
-
-    def self.man_page
-      File.dirname(__FILE__)+'/../man/detroit-ri.5'
     end
 
   end

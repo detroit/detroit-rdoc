@@ -1,12 +1,8 @@
-require 'detroit/tool'
+require 'detroit-standard'
 
 module Detroit
 
-  # Create a new RDoc tool with the specified +options+.
-  def RDoc(options={})
-    RDoc.new(options)
-  end
-
+  ##
   # RDoc documentation tool generates RDocs for Ruby project.
   #
   # By default it generates the rdoc documentaiton at doc/rdoc,
@@ -14,7 +10,22 @@ module Detroit
   # directory, in which case the rdoc documentation will be
   # stored there.
   #
+  # * document
+  # * reset
+  # * clean
+  # * purge
+  #
   class RDoc < Tool
+
+    # Works with the standard assembly.
+    #
+    # @!parse
+    #   include Standard
+    #
+    assembly Standard
+
+    # Location of manpage for tool.
+    MANPAGE = File.dirname(__FILE__) + '/../man/detroit-rdoc.5'      
 
     # Default location to store rdoc documentation files.
     DEFAULT_OUTPUT       = "doc"
@@ -31,8 +42,18 @@ module Detroit
     # Deafult extra options to add to rdoc call.
     DEFAULT_EXTRA        = ''
 
-
-    #  A T T R I B U T E S
+    # NOTE: Due to a bug in RDoc this needs to be done for now
+    # so that alternate templates can be used.
+    def prerequisite
+      begin
+        require 'rubygems'
+        gem('rdoc')
+      rescue LoadError
+        $stderr.puts "Oh no! No modern rdoc!"
+      end
+      #require 'rdoc'
+      require 'rdoc/rdoc'
+    end
 
     # Title of documents. Defaults to general metadata title field.
     attr_accessor :title
@@ -73,31 +94,6 @@ module Detroit
     # Additional options passed to the rdoc command.
     attr_accessor :extra
 
-
-    #  A S S E M B L Y  M E T H O D S
-
-    #
-    def assemble?(station, options={})
-      case station
-      when :document then true
-      when :reset    then true
-      when :clean    then true
-      when :purge    then true
-      end
-    end
-
-    # Attach to document, reset and purge assembly stations.
-    def assemble(station, options={})
-      case station
-      when :document then document
-      when :reset    then reset
-      when :clean    then clean
-      when :purge    then purge
-      end
-    end
-
-
-    #  S E R V I C E  M E T H O D S
 
     # Generate Rdoc documentation. Settings are the
     # same as the rdoc command's option, with two
@@ -168,16 +164,6 @@ module Detroit
       end
     end
 
-    # Are RDocs current and not in need of updating?
-    # If yes, returns string message, otherwise `false`.
-    def current?
-      if outofdate?(output, *resolved_files)
-        return false
-      else
-        "RDocs are current (#{output})"
-      end
-    end
-
     # Reset output directory, marking it as out-of-date.
     def reset
       if directory?(output)
@@ -198,6 +184,28 @@ module Detroit
       end
     end
 
+    # Are RDocs current and not in need of updating?
+    # If yes, returns string message, otherwise `false`.
+    def current?
+      if outofdate?(output, *resolved_files)
+        return false
+      else
+        "RDocs are current (#{output})"
+      end
+    end
+
+    # This tool ties into the `document`, `reset`, `clean` and `purge` stations
+    # of the standard assembly.
+    #
+    # @return [Boolean,Symbol]
+    def assemble?(station, options={})
+      return true if station == :document
+      return true if station == :reset
+      return true if station == :clean
+      return true if station == :purge
+      return false
+    end
+
   private
 
     #
@@ -215,6 +223,8 @@ module Detroit
 
     # Setup default attribute values.
     def initialize_defaults
+      super
+
       @title    = metadata.title
       @files    = metadata.loadpath + ['[A-Z]*', 'bin'] # DEFAULT_FILES
       @output   = Dir[DEFAULT_OUTPUT_MATCH].first || DEFAULT_OUTPUT
@@ -288,31 +298,6 @@ module Detroit
           File.write(file, html) unless trial?
         end
       end
-    end
-
-    #
-    def require_rdoc
-      # NOTE: Due to a bug in RDoc this needs to be done for now
-      # so that alternate templates can be used.
-      begin
-        require 'rubygems'
-        gem('rdoc')
-      rescue LoadError
-        $stderr.puts "Oh no! No modern rdoc!"
-      end
-      #require 'rdoc'
-      require 'rdoc/rdoc'
-    end
-
-    #
-    def initialize_requires
-      require_rdoc
-    end
-
-  public
-
-    def self.man_page
-      File.dirname(__FILE__)+'/../man/detroit-rdoc.5'      
     end
 
   end

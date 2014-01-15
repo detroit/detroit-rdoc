@@ -12,8 +12,8 @@ This plug-in package also includes detroit-ri(5).
 
 ## OPTIONS
 
-The following options can be used in the Detroit assembly file
-to define an RDoc service.
+The following options can be used in the Detroit toolchain file
+to define an RDoc tool instance.
 
   * `title` - Title of documents. Defaults to general metadata title field.
 
@@ -75,9 +75,9 @@ For more information:
 
 ## COPYRIGHT
 
-Copyright (c) 2010 Thomas Sawyer, Rubyworks
+Copyright (c) 2010 Rubyworks
 
-Detroit RDoc is distributable in accordance with the GPLv3 license.
+Detroit RDoc is distributable in accordance with the GPL v3 license.
 
 
 ## SEE ALSO

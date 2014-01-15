@@ -1,5 +1,4 @@
 #!mast .ruby bin lib man qed test [A-Z]*.*
-.ruby
 lib/detroit-rdoc.rb
 lib/detroit-ri.rb
 man/detroit-rdoc.5
@@ -8,6 +7,5 @@ man/detroit-rdoc.5.ronn
 man/detroit-ri.5
 man/detroit-ri.5.html
 man/detroit-ri.5.ronn
+README.md
 LICENSE.txt
-README.rdoc
-COPYING.rdoc

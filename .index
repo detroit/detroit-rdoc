@@ -1,0 +1,45 @@
+---
+revision: 2013
+type: ruby
+sources:
+- var
+authors:
+- name: T. Sawyer
+  email: transfire@gmail.com
+organizations:
+- name: Rubyworks
+requirements:
+- version: 0.4.0+
+  name: detroit
+- name: detroit-standard
+- name: rdoc
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: http://detroit.github.com/
+  label: Homepage
+- type: code
+  uri: http://github.com/detroit/detroit-rdoc
+  label: Source Code
+- type: mail
+  uri: http://google.groups.com/group/rubyworks-mailinglist
+  label: Mailing List
+repositories: []
+categories: []
+copyrights:
+- holder: Rubyworks
+  year: '2011'
+  license: GPL-3.0
+customs: []
+paths:
+  lib:
+  - lib
+name: detroit-rdoc
+title: Detroit RDoc
+summary: RDoc and RI plugins for Detroit
+created: '2011-10-16'
+description: RDoc and RI plugins for Detroit build system.
+suite: detroit
+version: 0.4.0
+date: '2014-01-14'
